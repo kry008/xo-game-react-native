@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "chess-react",
-    "slug": "chess-react",
+    "name": "xo-game-react-native",
+    "slug": "xo-game-react-native",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f4431443-123a-4485-b365-c989d32df08c"
+      }
+    },
+    "owner": "kry008"
   }
 }
