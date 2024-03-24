@@ -6,6 +6,7 @@ const GameScreen = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [currentPlayer, setCurrentPlayer] = useState('X');
   const [canMove, setCanMove] = useState(true);
+  const [whoseMoveText, setWhoseMoveText] = useState("Move of player X");
   useEffect(() => {
     checkWinner();
   }, [board]);
@@ -18,6 +19,7 @@ const GameScreen = () => {
         newBoard[index] = currentPlayer;
         setBoard(newBoard);
         setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
+        setWhoseMoveText(currentPlayer === 'X' ? "Move of player O" : "Move of player X");
     }
     else
     {
@@ -41,7 +43,8 @@ const GameScreen = () => {
     for (let i = 0; i < winningCombination.length; i++) {
       const [a, b, c] = winningCombination[i];
       if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-        alert(`Player ${currentPlayer} wins!`);
+        alert(`Player ${currentPlayer === 'X' ? 'O' : 'X'} wins!`);
+        setWhoseMoveText("Game over!");
         setCanMove(false);
         return;
       }
@@ -57,7 +60,7 @@ const GameScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text>Current Player: {currentPlayer}</Text>
+      <Text>{whoseMoveText}</Text>
       <View style={styles.board}>
         {board.map((value, index) => (
           <BoardField key={index} value={value} onPress={() => handlePress(index)} />
